@@ -14,9 +14,10 @@ namespace dominio
         [Required(ErrorMessage="El Titulo es obligatorio")]
         public string Titulo { get; set; }
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [Required(ErrorMessage = "La Fecha es obligatoria")]
         [Display(Name = "Fecha de lanzamiento")]
+        
         public DateTime FechaLanzamiento { get; set; }
         [Display(Name = "Cantidad de canciones")]
         [Required(ErrorMessage = "Las canciones son obligatorias")]
