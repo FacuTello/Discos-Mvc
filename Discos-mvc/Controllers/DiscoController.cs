@@ -19,6 +19,15 @@ namespace Discos_mvc.Controllers
         // GET: DiscoController/Details/5
         public ActionResult Details(int id)
         {
+            EstiloNegocio estilos = new EstiloNegocio();
+            TipoEdicionNegocio ediciones = new TipoEdicionNegocio();
+            ViewBag.Estilos = new SelectList(estilos.listar(), "Id", "Descripcion");
+            ViewBag.Ediciones = new SelectList(ediciones.listar(), "Id", "Descripcion");
+
+            DiscoNegocio negocio = new DiscoNegocio();
+            var lista = negocio.listar();
+            var disco = lista.Find(p => p.Id == id);
+            return View(disco);
             return View();
         }
 
@@ -93,16 +102,26 @@ namespace Discos_mvc.Controllers
         // GET: DiscoController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            EstiloNegocio estilos = new EstiloNegocio();
+            TipoEdicionNegocio ediciones = new TipoEdicionNegocio();
+            ViewBag.Estilos = new SelectList(estilos.listar(), "Id", "Descripcion");
+            ViewBag.Ediciones = new SelectList(ediciones.listar(), "Id", "Descripcion");
+
+            DiscoNegocio negocio = new DiscoNegocio();
+            var lista = negocio.listar();
+            var disco = lista.Find(p => p.Id == id);
+            return View(disco);
         }
 
         // POST: DiscoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Disco disco)
         {
             try
             {
+                DiscoNegocio negocio = new DiscoNegocio();
+                negocio.eliminar(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

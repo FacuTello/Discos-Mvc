@@ -1,0 +1,46 @@
+﻿@model dominio.Disco
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar Disco</h1>
+
+<h3>¿Estas seguro que queres eliminar el disco?</h3>
+<div>
+    <hr />
+    <dl class="row justify-content-center">
+        <dt class = "col-sm-8 text-center">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-8 text-center">
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+        <dt class="col-sm-8 text-center">
+            @Html.DisplayNameFor(model => model.FechaLanzamiento)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.FechaLanzamiento)
+        </dd>
+        <dt class="col-sm-8 text-center">
+            @Html.DisplayNameFor(model => model.CantidadCanciones)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.CantidadCanciones)
+        </dd>
+        <div class="col-8 text-center">
+            <img src="@Model.UrlTapa" width="350" />
+        </div>
+    </dl>
+    
+    <form asp-action="Delete" class="text-center">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-warning">Regresar al listado</a>
+    </form>
+</div>
