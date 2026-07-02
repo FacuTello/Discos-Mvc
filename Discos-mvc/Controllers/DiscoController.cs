@@ -9,11 +9,16 @@ namespace Discos_mvc.Controllers
     public class DiscoController : Controller
     {
         // GET: DiscoController
-        public ActionResult Index()
+        public ActionResult Index(string filtro)
         {
             DiscoNegocio negocio = new DiscoNegocio();
-            var lista = negocio.listar();
-            return View(lista);
+            var discos = negocio.listar();
+
+            if (!string.IsNullOrEmpty(filtro))
+                discos = discos.FindAll(p => p.Titulo.Contains(filtro));
+
+
+            return View(discos);
         }
 
         // GET: DiscoController/Details/5

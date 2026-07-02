@@ -9,6 +9,16 @@
 <p>
     <a asp-action="Create" class="btn btn-outline-primary" >Agregar Nuevo</a>
 </p>
+<form asp-action="index" method="get">
+    <div class="row d-flex">
+        <div class="col-6 mb-2">
+            <input class="form-control" type="text" placeholder="Buscar por nombre .." name="filtro" /> 
+        </div>
+        <div class="col-6 mb-2">
+            <button class="btn btn-primary" type="submit">Buscar</button>
+        </div>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>
